@@ -1,0 +1,100 @@
+@layer theme, base, layout, components;
+
+@layer theme {
+	:root {
+		color-scheme: light dark;
+		&:has(input[name="color-scheme"][value="light dark"]:checked) {
+			color-scheme: light dark;
+		}
+		&:has(input[name="color-scheme"][value="light"]:checked) {
+			color-scheme: light;
+		}
+		&:has(input[name="color-scheme"][value="dark"]:checked) {
+			color-scheme: dark;
+		}
+
+		--color-background: light-dark(#f7f7f7, #161716);
+		--color-foreground: light-dark(#333333, #d7d7d8);
+	}
+
+	body {
+		background-color: var(--color-background);
+		color: var(--color-foreground);
+	}
+}
+
+@layer base {
+	*,
+	*::before,
+	*::after {
+		box-sizing: border-box;
+	}
+
+	body {
+		font-family: sans-serif;
+	}
+
+	/* Use same font for form controls */
+	input,
+	button,
+	textarea,
+	select {
+		font: inherit;
+	}
+
+	button {
+		padding: var(--spacing-small);
+		border: 0;
+		border-radius: var(--radius-medium);
+		background-color: var(--color-background-2);
+		cursor: pointer;
+	}
+
+	button:hover {
+		background-color: #ccc;
+	}
+
+	input,
+	select {
+		display: block;
+	}
+
+	label {
+		font-weight: bold;
+	}
+
+	h1 {
+		font-size: 4rem;
+		text-align: center;
+	}
+
+	h2 {
+		font-size: 3rem;
+	}
+
+	h3 {
+		font-size: 2rem;
+	}
+
+	p {
+		font-size: 1.5rem;
+		line-height: 1.5;
+	}
+
+	img {
+		max-width: 100%;
+	}
+}
+
+@layer layout {
+	main,
+	footer {
+		max-width: 66%;
+		margin: 0 auto;
+	}
+
+	.right {
+		float: right;
+		width: 30%;
+	}
+}
